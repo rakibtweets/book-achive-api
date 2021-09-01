@@ -3,6 +3,7 @@ const loadBooks = () => {
     const bookName = searchField.value 
     searchField.value = ''
 
+    toggleSpinner('block')
 
     // Book search Api call
 
@@ -13,6 +14,9 @@ const loadBooks = () => {
 };
 
 // loader function
+const toggleSpinner = (displayStyle) => {
+    document.getElementById('spinner').style.display = displayStyle
+}
 
 // displaying search result
 
@@ -40,5 +44,5 @@ const displaySearchResult = books => {
 
       
     });
-    
+    toggleSpinner('none')
 };
