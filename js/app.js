@@ -3,6 +3,7 @@ const loadBooks = () => {
     const bookName = searchField.value 
     searchField.value = ''
 
+
     // Book search Api call
 
     const url = `http://openlibrary.org/search.json?q=${bookName}`
@@ -11,12 +12,33 @@ const loadBooks = () => {
     .then(data => displaySearchResult(data.docs))
 };
 
+// loader function
+
 // displaying search result
 
 const displaySearchResult = books => {
+    const booksContainer = document.getElementById('all-books')
+    booksContainer.textContent = ''
     books.forEach(book => {
-        
-        console.log(book.title)
+
+        const div = document.createElement('div')
+        div.classList.add('col','d-block')
+        div.innerHTML = `
+        <div class="card">
+        <img src="https://covers.openlibrary.org/b/id/${book?.cover_i}-M.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">${book.title}</h5>
+          <p class="card-text"><small>By</small> ${book.author_name}</p>
+          <p>First Published: ${book.first_publish_year}</p>
+
+        </div>
+      </div>
+      
+        `;
+
+        booksContainer.appendChild(div);
+
+      
     });
-    // console.log(books);
-}
+    
+};
