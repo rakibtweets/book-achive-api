@@ -49,7 +49,7 @@ const displaySearchResult = books => {
         document.getElementById('no-result-found').style.display = 'block'
     }
 
-    books.forEach(book => {
+    books?.forEach(book => {
         
         emptySearch('none')
 
@@ -67,6 +67,11 @@ const displaySearchResult = books => {
           <span class="fw-bold">${book.author_name ? book.author_name : 'Author Known'}</span>
           
           </p>
+          <p class="card-text">
+          Publisher:
+          <span class="fw-bold">${book.publisher ? book.publisher: 'Known publisher'}</span>
+          
+          </p>
           <p>First Published: 
           <span class="fw-bold">${book.first_publish_year ? book.first_publish_year : 'Year Unknown' }</span>
           
@@ -76,9 +81,7 @@ const displaySearchResult = books => {
       </div>
       
         `;
-
         booksContainer.appendChild(div);
-
       
     });
     toggleSpinner('none')
