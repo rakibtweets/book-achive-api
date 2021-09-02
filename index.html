@@ -29,10 +29,14 @@
             type="text"
             placeholder="Search Books"
           />
+          <!-- Error Message -->
+          <div id="error" class="alert alert-danger p-1 w-25 m-1">
+            <strong>Empty Search !!</strong>
+          </div>
           <button
             onclick="loadBooks()"
             id="search-btn"
-            class="btn btn-primary fw-bold mt-3"
+            class="btn btn-primary fw-bold mt-2"
           >
             Search
           </button>
@@ -41,12 +45,11 @@
 
       <!-- Loader -->
       <div id="spinner" class="text-center mt-5">
-        <div  class="spinner-border text-danger " role="status">
-        </div>
+        <div class="spinner-border text-danger" role="status"></div>
       </div>
 
       <!-- Display Result div -->
-      <section id="result-container" class=" mt-5">
+      <section id="result-container" class="mt-5">
         <div class="all-books-items">
           <div id="all-books" class="row row-cols-lg-3 gy-5 gx-4">
             <!-- all books append heere -->

@@ -2,6 +2,9 @@ const loadBooks = () => {
     const searchField = document.getElementById('search-field')
     const bookName = searchField.value 
     searchField.value = ''
+    if(bookName === ''){
+        emptySearch('block')
+    }
 
     toggleSpinner('block')
     searchResultShow('none')
@@ -22,15 +25,28 @@ const toggleSpinner = (displayStyle) => {
 const searchResultShow = (displayStyle) => {
     document.getElementById('result-container').style.display = displayStyle
 
+};
+
+// error handling
+
+const emptySearch = displayStyle => {
+    document.getElementById('error').style.display = displayStyle
+
 }
+
 
 // displaying search result
 
 const displaySearchResult = books => {
     const booksContainer = document.getElementById('all-books')
     booksContainer.textContent = ''
-    console.log(books)
+
+
+    // console.log(books)
     books.forEach(book => {
+    emptySearch('none')
+
+        // console.log(book)
 
         const div = document.createElement('div')
         div.classList.add('col','d-block')
