@@ -39,14 +39,11 @@ const displaySearchResult = books => {
     booksContainer.textContent = ''
 
     // error handling and search results
-    if(books){
-        document.getElementById('no-result-found').style.display = 'none'
-    }
     if(books.length === 0){
         document.getElementById('no-result-found').style.display = 'block'
         document.getElementById('no-result-found').innerText = 'No result found'
         emptySearch('none')
-    };
+    }
     if(books.length !== 0){
         document.getElementById('no-result-found').style.display = 'block'
         document.getElementById('no-result-found').innerText = `${books.length} result found`
@@ -62,7 +59,7 @@ const displaySearchResult = books => {
         <div class="card border-2 rounded-2 h-100">
                  <img width = 100%; height = "300px" src="https://covers.openlibrary.org/b/id/${book.cover_i ? book.cover_i: 10909258}-M.jpg" class="card-img-top p-2" alt="...">
         <div class="card-body">
-            <h6 class="card-title text-primary fw-bold">${book.title}</h6>
+            <h5 class="card-title fw-bold">${book.title}</h5>
             <p class="card-text">
             Author:
             <span class="fw-bold">${book.author_name ? book.author_name : 'Author Known'}</span>

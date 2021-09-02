@@ -23,7 +23,7 @@
       <!-- Search section -->
       <section class="search-section">
         <div class="w-50 mx-auto">
-          <div class=" d-flex justify-content-center align-items-center gap-2">
+          <div class="d-flex justify-content-center align-items-center gap-2">
             <input
               id="search-field"
               class="form-control"
@@ -39,21 +39,25 @@
             </button>
           </div>
           <!-- Error Message -->
-          <p id="error" class="text-danger fw-bold mt-1">Empty Search !!</p>
+          <p id="error" class="text-danger fw-bold mt-1">Empty Search!!</p>
         </div>
       </section>
 
-      <!-- Loader -->
+      <!-- Spinner on data loading -->
       <div id="spinner" class="text-center mt-5">
         <div class="spinner-border text-danger" role="status"></div>
       </div>
 
+      <!-- search result count -->
       <h3 id="no-result-found" class="text-center mt-5">No results found</h3>
 
       <!-- Display Result div -->
       <section id="result-container" class="mt-5">
         <div class="all-books-items">
-          <div id="all-books" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 gy-5 gx-4">
+          <div
+            id="all-books"
+            class="row row-cols-1 row-cols-md-2 row-cols-lg-3 gy-5 gx-4"
+          >
             <!-- all books append heere -->
           </div>
         </div>
