@@ -1,3 +1,4 @@
+
 const loadBooks = () => {
     const searchField = document.getElementById('search-field')
     const bookName = searchField.value 
@@ -10,7 +11,6 @@ const loadBooks = () => {
     searchResultShow('none')
 
     // Book search Api call
-
     const url = `http://openlibrary.org/search.json?q=${bookName}`
     fetch(url)
     .then(res => res.json())
@@ -24,11 +24,12 @@ const toggleSpinner = (displayStyle) => {
 
 const searchResultShow = (displayStyle) => {
     document.getElementById('result-container').style.display = displayStyle
+    document.getElementById('no-result-found').style.display = displayStyle
+
 
 };
 
 // error handling
-
 const emptySearch = displayStyle => {
     document.getElementById('error').style.display = displayStyle
 
@@ -36,30 +37,33 @@ const emptySearch = displayStyle => {
 
 
 // displaying search result
-
 const displaySearchResult = books => {
     const booksContainer = document.getElementById('all-books')
     booksContainer.textContent = ''
-    console.log(books)
+
+    // error handling and search results
     if(books){
         document.getElementById('no-result-found').style.display = 'none'
-
     }
     if(books.length === 0){
         document.getElementById('no-result-found').style.display = 'block'
-    }
-
-    books?.forEach(book => {
-        
+        document.getElementById('no-result-found').innerText = 'No result found'
         emptySearch('none')
+    };
+    if(books.length !== 0){
+        document.getElementById('no-result-found').style.display = 'block'
+        document.getElementById('no-result-found').innerText = `${books.length} result found`
+        // console.log(books.length)
+    };
 
-        // console.log(book)
+    // loopting through books
+    books?.forEach(book => {
 
         const div = document.createElement('div')
         div.classList.add('col','d-block')
         div.innerHTML = `
         <div class="card border-2 rounded-2 h-100">
-        <img width = 100%; height = "300px" src="https://covers.openlibrary.org/b/id/${book?.cover_i}-M.jpg" class="card-img-top p-2" alt="...">
+        <img width = 100%; height = "300px" src="https://covers.openlibrary.org/b/id/${book.cover_i ? book.cover_i: 10909258}-M.jpg" class="card-img-top p-2" alt="...">
         <div class="card-body">
           <h5 class="card-title text-primary">${book.title}</h5>
           <p class="card-text">
@@ -69,7 +73,7 @@ const displaySearchResult = books => {
           </p>
           <p class="card-text">
           Publisher:
-          <span class="fw-bold">${book.publisher ? book.publisher: 'Known publisher'}</span>
+          <span class="fw-bold">${book.publisher ? book.publisher[0]: 'Known publisher'}</span>
           
           </p>
           <p>First Published: 
@@ -84,6 +88,7 @@ const displaySearchResult = books => {
         booksContainer.appendChild(div);
       
     });
+
     toggleSpinner('none')
     searchResultShow('block')
 };
