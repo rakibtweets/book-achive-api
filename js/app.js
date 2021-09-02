@@ -50,6 +50,7 @@ const displaySearchResult = books => {
     if(books.length !== 0){
         document.getElementById('no-result-found').style.display = 'block'
         document.getElementById('no-result-found').innerText = `${books.length} result found`
+
     };
 
     // loopting through books
