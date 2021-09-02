@@ -5,6 +5,7 @@
 }
 
 #spinner ,
-#error{
+#error,
+#no-result-found{
   display: none;
 }

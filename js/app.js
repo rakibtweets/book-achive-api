@@ -40,11 +40,18 @@ const emptySearch = displayStyle => {
 const displaySearchResult = books => {
     const booksContainer = document.getElementById('all-books')
     booksContainer.textContent = ''
+    console.log(books)
+    if(books){
+        document.getElementById('no-result-found').style.display = 'none'
 
+    }
+    if(books.length === 0){
+        document.getElementById('no-result-found').style.display = 'block'
+    }
 
-    // console.log(books)
     books.forEach(book => {
-    emptySearch('none')
+        
+        emptySearch('none')
 
         // console.log(book)
 
