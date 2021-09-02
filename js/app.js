@@ -11,7 +11,7 @@ const loadBooks = () => {
     searchResultShow('none')
 
     // Book search Api call
-    const url = `http://openlibrary.org/search.json?q=${bookName}`
+    const url = `https://openlibrary.org/search.json?q=${bookName}`
     fetch(url)
     .then(res => res.json())
     .then(data => displaySearchResult(data.docs))
